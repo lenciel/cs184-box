@@ -6,8 +6,5 @@ nfs: false
 # Enable headless mode.
 gui: false
 server_name: local.testbox
-# Used for the root mysql password
-db_user: vagrant
-db_pass: vagrant
 # Turns on Vagrant debug flags, useful if you have issues with puppet
 debug: false

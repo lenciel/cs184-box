@@ -30,6 +30,8 @@ Vagrant::Config.run do |config|
     config.ssh.max_tries = 50
     config.ssh.timeout   = 500
 
+    config.vm.network :bridged
+
     # Setup a shared folder with the host.
     if CONF['nfs'] == false or RUBY_PLATFORM =~ /mswin(32|64)/
         config.vm.share_folder("vagrant-root", MOUNT_POINT, ".")
@@ -52,8 +54,6 @@ Vagrant::Config.run do |config|
 
         # Pass options from vagrantconfig_local.yaml
         puppet.facter = [
-            ['db_user', CONF['db_user']],
-            ['db_pass', CONF['db_pass']],
             ['project_path', MOUNT_POINT],
             ['server_name', CONF['server_name']],
         ]
