@@ -43,20 +43,20 @@ Vagrant::Config.run do |config|
     config.vm.forward_port 8000, 8888
 
     # Provision the server with Puppet.
-    config.vm.provision :puppet do |puppet|
-        puppet.manifests_path = "puppet/manifests"
-        puppet.module_path = "puppet/modules"
-        puppet.manifest_file  = "vagrant.pp"
+    #config.vm.provision :puppet do |puppet|
+    #    puppet.manifests_path = "puppet/manifests"
+    #    puppet.module_path = "puppet/modules"
+    #    puppet.manifest_file  = "vagrant.pp"
 
-        if CONF['debug'] == true
-            puppet.options = "--verbose --debug"
-        end
+    #    if CONF['debug'] == true
+    #        puppet.options = "--verbose --debug"
+    #    end
 
-        # Pass options from vagrantconfig_local.yaml
-        puppet.facter = [
-            ['project_path', MOUNT_POINT],
-            ['server_name', CONF['server_name']],
-        ]
-    end
+    #    # Pass options from vagrantconfig_local.yaml
+    #    puppet.facter = [
+    #        ['project_path', MOUNT_POINT],
+    #        ['server_name', CONF['server_name']],
+    #    ]
+    #end
 
 end
